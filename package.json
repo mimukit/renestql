@@ -29,7 +29,7 @@
     "@nestjs/core": "6.5.3",
     "@nestjs/graphql": "6.4.2",
     "@nestjs/platform-express": "6.5.3",
-    "antd": "3.22.0",
+    "antd": "3.22.1",
     "apollo-server-express": "2.9.0",
     "document-register-element": "1.14.3",
     "graphql": "14.5.3",
