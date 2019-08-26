@@ -8,7 +8,7 @@ import { UserModule } from './modules/user/user.module';
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
       definitions: {
-        path: join(process.cwd(), './graphql.types.ts'),
+        path: join(process.cwd(), './apps/api/src/app/graphql.types.ts'),
         outputAs: 'class',
       },
       debug: true,

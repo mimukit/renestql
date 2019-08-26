@@ -1,4 +1,5 @@
 import { Query, Resolver } from '@nestjs/graphql';
+import { User } from '../../graphql.types';
 
 @Resolver('User')
 export class UserResolver {
@@ -11,7 +12,7 @@ export class UserResolver {
   ];
 
   @Query()
-  users() {
+  users(): User[] {
     return this.userList;
   }
 }
