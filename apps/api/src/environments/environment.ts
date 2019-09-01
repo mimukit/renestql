@@ -10,9 +10,8 @@ export const environment: IEnvironment = {
   },
 
   server: {
-    domainUrl: 'http://localhost:4000',
+    domainUrl: 'http://localhost',
     port: 4000,
-    globalPrefix: '/graphql',
   },
 
   database: {

@@ -22,7 +22,6 @@ export interface IEnvironment {
   server: {
     domainUrl: string;
     port: number;
-    globalPrefix: string;
   };
 
   database: TypeOrmModuleOptions;

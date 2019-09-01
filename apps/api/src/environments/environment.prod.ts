@@ -10,9 +10,8 @@ export const environment: IEnvironment = {
   },
 
   server: {
-    domainUrl: 'https://api.shorol.io',
+    domainUrl: process.env.DOMAIN_URL,
     port: 8080,
-    globalPrefix: '/graphql',
   },
 
   database: {
