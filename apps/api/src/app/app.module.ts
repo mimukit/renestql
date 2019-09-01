@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { getMetadataArgsStorage } from 'typeorm';
-import * as typeOrmConfig from '../config/typeorm/typeorm.config';
+import { typeOrmConfig } from '../config/typeorm/typeorm.config';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
