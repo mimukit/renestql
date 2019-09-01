@@ -24,7 +24,9 @@
     "format:check": "nx format:check",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "typeorm:cli": "ts-node -O '{\"module\": \"commonjs\"}' ./node_modules/.bin/typeorm -f ./apps/api/src/config/typeorm/typeorm.config.ts",
+    "typeorm": "typeorm"
   },
   "private": true,
   "dependencies": {
