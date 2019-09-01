@@ -42,7 +42,6 @@
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-router-dom": "5.0.1",
-    "reflect-metadata": "0.1.13",
     "typeorm": "0.2.18"
   },
   "devDependencies": {
