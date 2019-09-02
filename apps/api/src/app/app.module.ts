@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { join } from 'path';
 import { getMetadataArgsStorage } from 'typeorm';
+import { graphqlConfig } from '../config/graphql/graphql.config';
 import { typeOrmConfig } from '../config/typeorm/typeorm.config';
-import { environment } from '../environments/environment';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
@@ -16,15 +15,7 @@ import { UserModule } from './modules/user/user.module';
     }),
 
     // Grpahql Server Module
-    GraphQLModule.forRoot({
-      typePaths: ['./**/*.graphql'],
-      definitions: {
-        path: join(process.cwd(), './apps/api/src/app/graphql.types.ts'),
-        outputAs: 'class',
-      },
-      debug: environment.production ? false : true,
-      playground: environment.production ? false : true,
-    }),
+    GraphQLModule.forRoot(graphqlConfig),
 
     // Application Modules
     UserModule,

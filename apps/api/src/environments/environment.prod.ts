@@ -7,6 +7,8 @@ export const environment: IEnvironment = {
   env: {
     NODE_ENV: 'production',
     LOG_LEVEL: 'info',
+    GRAPHQL_DEPTH_LIMIT: '5',
+    GRAPHQL_QUERY_COST_LIMIT: '1000',
   },
 
   server: {
