@@ -28,6 +28,8 @@ export const requestLogger = (
       req.body.operationName === 'IntrospectionQuery'
         ? 'Introspection Query'
         : JSON.stringify(req.body)
+            .replace(/\\n/g, '')
+            .replace(/\s\s+/g, ' ')
     }`,
     'Request'
   );
