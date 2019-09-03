@@ -2,13 +2,11 @@ import { IEnvironment } from './environment.interface';
 
 export const environment: IEnvironment = {
   production: true,
-  envName: 'production',
 
   env: {
-    NODE_ENV: 'production',
-    LOG_LEVEL: 'info',
-    GRAPHQL_DEPTH_LIMIT: '5',
-    GRAPHQL_QUERY_COST_LIMIT: '1000',
+    NODE_ENV: process.env.NODE_ENV || 'production',
+    GRAPHQL_DEPTH_LIMIT: process.env.GRAPHQL_DEPTH_LIMIT || '5',
+    GRAPHQL_QUERY_COST_LIMIT: process.env.GRAPHQL_QUERY_COST_LIMIT || '1000',
   },
 
   server: {
@@ -29,5 +27,9 @@ export const environment: IEnvironment = {
 
   auth: {
     secretKey: process.env.SECRET_KEY,
+  },
+
+  debug: {
+    printErrorStack: false,
   },
 };
