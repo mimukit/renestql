@@ -18,12 +18,12 @@ export const environment: IEnvironment = {
 
   database: {
     host: '127.0.0.1',
-    port: 32771,
+    port: 3306,
     database: 'nestdb',
     username: 'root',
     password: 'root',
     logging: true,
-    synchronize: true,
+    synchronize: false,
     retryAttempts: 3,
   },
 
