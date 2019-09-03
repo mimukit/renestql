@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
 import { AuthPayload, RegisterInput } from '../../graphql.types';
@@ -21,15 +21,14 @@ export class AuthResolver {
     const userExists = await this.userRepository.findOne({ email });
 
     if (userExists && userExists.id) {
-      throw new HttpException(
-        'User already exists with this email',
-        HttpStatus.UNPROCESSABLE_ENTITY
-      );
+      throw new BadRequestException('User already exists with this email');
     }
 
     // Create new user with inputs
 
-    const user = this.userRepository.create({ email, password });
+    const hashPassword = await this.authService.getHashPassword(password);
+
+    const user = this.userRepository.create({ email, password: hashPassword });
 
     const newUser = await this.userRepository.save(user);
 

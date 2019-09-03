@@ -48,6 +48,7 @@
     "@nestjs/typeorm": "6.1.3",
     "antd": "3.22.2",
     "apollo-server-express": "2.9.3",
+    "bcryptjs": "2.4.3",
     "document-register-element": "1.14.3",
     "graphql": "14.5.4",
     "graphql-depth-limit": "1.1.0",

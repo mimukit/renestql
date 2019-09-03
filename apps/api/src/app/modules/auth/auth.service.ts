@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import bcrypt from 'bcryptjs';
+import { PASSWORD_HASH_ROUND } from '../../const';
 import { User } from '../user/user.entity';
 import { UserRepository } from '../user/user.repository';
 
@@ -23,5 +25,9 @@ export class AuthService {
     const payload = { userId: user.id };
 
     return this.jwtService.signAsync(payload);
+  }
+
+  async getHashPassword(password: string) {
+    return await bcrypt.hash(password, PASSWORD_HASH_ROUND);
   }
 }
