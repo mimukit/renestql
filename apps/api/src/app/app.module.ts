@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getMetadataArgsStorage } from 'typeorm';
 import { graphqlConfig } from '../config/graphql/graphql.config';
 import { typeOrmConfig } from '../config/typeorm/typeorm.config';
+import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
@@ -19,6 +20,7 @@ import { UserModule } from './modules/user/user.module';
 
     // Application Modules
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
