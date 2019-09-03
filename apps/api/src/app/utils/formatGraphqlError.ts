@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { generateRefCode } from './generateErrorRefCode';
 
 export const formatGraphqlError = (error: any) => {
-  const errorRefId = generateRefCode();
+  const errorRefCode = generateRefCode();
 
   const code = error.extensions.exception.status || 500;
   const path =
@@ -29,7 +29,7 @@ export const formatGraphqlError = (error: any) => {
     path,
     name,
     message,
-    errorRefId,
+    errorRefCode,
   };
 
   if (error.extensions.code === 'GRAPHQL_VALIDATION_FAILED') {
