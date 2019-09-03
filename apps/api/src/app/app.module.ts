@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getMetadataArgsStorage } from 'typeorm';
 import { graphqlConfig } from '../config/graphql/graphql.config';
 import { typeOrmConfig } from '../config/typeorm/typeorm.config';
+import { PerformanceLoggingInterceptor } from './interceptors/performanceLogging.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 
@@ -23,6 +25,11 @@ import { UserModule } from './modules/user/user.module';
     AuthModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: PerformanceLoggingInterceptor,
+    },
+  ],
 })
 export class AppModule {}

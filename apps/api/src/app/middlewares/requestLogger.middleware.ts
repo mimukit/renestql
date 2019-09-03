@@ -31,7 +31,7 @@ export const requestLogger = (
             .replace(/\\n/g, '')
             .replace(/\s\s+/g, ' ')
     }`,
-    'Request'
+    'RequestLogger'
   );
 
   next();
