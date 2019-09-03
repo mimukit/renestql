@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import { AppModule } from './app/app.module';
-import { requestLogger } from './app/middleware/requestLogger.middleware';
+import { requestLogger } from './app/middlewares/requestLogger.middleware';
 import { environment } from './environments/environment';
 
 const PORT = environment.server.port;
