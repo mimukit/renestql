@@ -16,7 +16,9 @@
     "skipDefaultLibCheck": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-intro/schema": ["libs/schema/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp", "dist"]
 }
