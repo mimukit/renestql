@@ -5,12 +5,28 @@
  */
 
 /* tslint:disable */
+export class RegisterInput {
+    email: string;
+    password: string;
+}
+
+export class AuthPayload {
+    token: string;
+    user: User;
+}
+
+export abstract class IMutation {
+    abstract register(data: RegisterInput): AuthPayload | Promise<AuthPayload>;
+}
+
 export abstract class IQuery {
     abstract users(): User[] | Promise<User[]>;
+
+    abstract me(): User | Promise<User>;
 }
 
 export class User {
     id: string;
-    name: string;
-    age?: number;
+    userId: string;
+    email: string;
 }

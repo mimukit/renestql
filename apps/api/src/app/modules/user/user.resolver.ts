@@ -6,16 +6,8 @@ import { UserRepository } from './user.repository';
 export class UserResolver {
   constructor(private readonly userRepository: UserRepository) {}
 
-  userList = [
-    {
-      id: '123',
-      name: 'John Doe',
-      age: 20,
-    },
-  ];
-
   @Query()
-  users(): User[] {
-    return this.userList;
+  async users(): Promise<User[]> {
+    return await this.userRepository.find();
   }
 }
