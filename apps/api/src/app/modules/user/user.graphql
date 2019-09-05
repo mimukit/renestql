@@ -6,5 +6,5 @@ type User {
 
 type Query {
   users: [User!]!
-  me: User
+  whoami: User
 }

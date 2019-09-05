@@ -29,7 +29,7 @@ export abstract class IMutation {
 export abstract class IQuery {
     abstract users(): User[] | Promise<User[]>;
 
-    abstract me(): User | Promise<User>;
+    abstract whoami(): User | Promise<User>;
 }
 
 export class User {

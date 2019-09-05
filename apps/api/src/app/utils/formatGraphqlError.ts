@@ -5,6 +5,10 @@ import { generateRefCode } from './generateErrorRefCode';
 export const formatGraphqlError = (error: any) => {
   const errorRefCode = generateRefCode();
 
+  if (environment.debug.printRawError) {
+    Logger.error(error, 'RawError');
+  }
+
   const code = error.extensions.exception.status || 500;
   const path =
     error.path && error.path.length > 0 ? error.path[0] : error.extensions.path;
@@ -14,7 +18,7 @@ export const formatGraphqlError = (error: any) => {
     error.extensions.code ||
     'InternalServerError';
   const message =
-    error.message.message || error.message || 'internal server error';
+    error.message.message || error.message.error || 'internal server error';
 
   const stack =
     environment.debug.printErrorStack &&
@@ -58,6 +62,13 @@ export const formatGraphqlError = (error: any) => {
     message.includes('invalid token')
   ) {
     formattedError.message! = `invalid token, please login again`;
+  }
+
+  if (
+    error.extensions.code === 'INTERNAL_SERVER_ERROR' &&
+    message.includes('Unauthorized')
+  ) {
+    formattedError.message! = `unauthorized, please login to access`;
   }
 
   if (error.extensions.code === 'FORBIDDEN') {
