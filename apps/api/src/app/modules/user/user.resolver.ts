@@ -16,10 +16,7 @@ export class UserResolver {
 
   @Query('whoami')
   @UseGuards(GqlAuthGuard)
-  async whoami(@CurrentUser() user: any): Promise<User> {
-    return await this.userService.currentUser(
-      '6e21d216-a369-4929-912f-0791c629d0c0',
-      user
-    );
+  async whoami(@CurrentUser() user: User): Promise<User> {
+    return await this.userService.currentUser(user);
   }
 }

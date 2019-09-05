@@ -1,5 +1,5 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { User } from './user.entity';
+import { Injectable } from '@nestjs/common';
+import { User } from '../../graphql.types';
 import { UserRepository } from './user.repository';
 
 @Injectable()
@@ -10,8 +10,7 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  async currentUser(userId: string, user: any): Promise<User> {
-    Logger.debug(user, 'MeQuery');
-    return this.userRepository.findOne({ id: userId });
+  async currentUser(user: User): Promise<User> {
+    return this.userRepository.findOne({ id: user.id });
   }
 }
