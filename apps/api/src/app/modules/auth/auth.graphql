@@ -1,8 +1,14 @@
 type Mutation {
   register(data: RegisterInput!): AuthPayload!
+  login(data: LoginInput!): AuthPayload!
 }
 
 input RegisterInput {
+  email: String!
+  password: String!
+}
+
+input LoginInput {
   email: String!
   password: String!
 }

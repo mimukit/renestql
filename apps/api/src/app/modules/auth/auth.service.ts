@@ -1,27 +1,56 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcryptjs';
 import { PASSWORD_HASH_ROUND } from '../../const';
+import { AuthPayload, LoginInput } from '../../graphql.types';
 import { User } from '../user/user.entity';
 import { UserRepository } from '../user/user.repository';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly usersRepository: UserRepository,
+    private readonly userRepository: UserRepository,
     private readonly jwtService: JwtService
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersRepository.findOne(username);
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
-      return result;
+  async login({ email, password }: LoginInput): Promise<AuthPayload> {
+    // Check if user with input email exists''
+    const user = await this.userRepository.findOne({ email });
+
+    if (!user || !user.id) {
+      throw new BadRequestException('login failed, invalid email or password');
     }
-    return null;
+
+    // Verify password
+    const userPassword = await this.userRepository.findOne(
+      { id: user.id },
+      { select: ['password'] }
+    );
+
+    const validPassword = await this.verifyPassword(
+      password,
+      userPassword.password
+    );
+
+    if (!validPassword) {
+      throw new BadRequestException('login failed, invalid email or password');
+    }
+
+    Logger.debug(user, 'LoginUser');
+    Logger.debug(userPassword, 'LoginPassword');
+    Logger.debug(validPassword, 'LoginPasswordValid');
+
+    // Generate login token for new user
+
+    const token = await this.getToken(user);
+
+    return {
+      token,
+      user,
+    };
   }
 
-  async getToken(user: User) {
+  async getToken(user: User): Promise<string> {
     const payload = { userId: user.id };
 
     return this.jwtService.signAsync(payload);
@@ -29,5 +58,12 @@ export class AuthService {
 
   async getHashPassword(password: string) {
     return await bcrypt.hash(password, PASSWORD_HASH_ROUND);
+  }
+
+  async verifyPassword(
+    inputPassword: string,
+    actualPasswordHash: string
+  ): Promise<boolean> {
+    return await bcrypt.compare(inputPassword, actualPasswordHash);
   }
 }

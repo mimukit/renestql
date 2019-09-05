@@ -1,8 +1,7 @@
 import { BadRequestException, UsePipes } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { JwtService } from '@nestjs/jwt';
-import { registerInputSchema } from '@nx-intro/schema';
-import { AuthPayload, RegisterInput } from '../../graphql.types';
+import { loginInputSchema, registerInputSchema } from '@nx-intro/schema';
+import { AuthPayload, LoginInput, RegisterInput } from '../../graphql.types';
 import { YupValidationPipe } from '../../pipes/yupValidation.pipe';
 import { UserRepository } from '../user/user.repository';
 import { AuthService } from './auth.service';
@@ -11,7 +10,6 @@ import { AuthService } from './auth.service';
 export class AuthResolver {
   constructor(
     private readonly userRepository: UserRepository,
-    private readonly jwtService: JwtService,
     private readonly authService: AuthService
   ) {}
 
@@ -43,5 +41,11 @@ export class AuthResolver {
       token,
       user: newUser,
     };
+  }
+
+  @Mutation('login')
+  @UsePipes(new YupValidationPipe(loginInputSchema))
+  async login(@Args('data') data: LoginInput): Promise<AuthPayload> {
+    return this.authService.login(data);
   }
 }
