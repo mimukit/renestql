@@ -3,7 +3,8 @@ import { NestFactory } from '@nestjs/core';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import { AppModule } from './app/app.module';
-import { requestLogger } from './app/middlewares/requestLogger.middleware';
+import { httpLogger } from './app/middlewares/httpLogger.middleware';
+import { setRequestId } from './app/middlewares/setRequestId.middleware';
 import { environment } from './environments/environment';
 
 const PORT = environment.server.port;
@@ -20,7 +21,9 @@ async function bootstrap() {
 
   app.use(bodyParser.json());
 
-  app.use(requestLogger);
+  app.use(setRequestId);
+
+  app.use(httpLogger);
 
   // Start app
   await app.listen(PORT);

@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getMetadataArgsStorage } from 'typeorm';
 import { graphqlConfig } from '../config/graphql/graphql.config';
 import { typeOrmConfig } from '../config/typeorm/typeorm.config';
-import { PerformanceLoggingInterceptor } from './interceptors/performanceLogging.interceptor';
+import { GraphqlLoggingInterceptor } from './interceptors/graphqlLogging.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 
@@ -28,7 +28,7 @@ import { UserModule } from './modules/user/user.module';
   providers: [
     {
       provide: APP_INTERCEPTOR,
-      useClass: PerformanceLoggingInterceptor,
+      useClass: GraphqlLoggingInterceptor,
     },
   ],
 })
