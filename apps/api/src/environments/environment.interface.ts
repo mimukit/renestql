@@ -30,5 +30,6 @@ export interface IEnvironment {
 
   debug: {
     printErrorStack: boolean;
+    printRawError: boolean;
   };
 }

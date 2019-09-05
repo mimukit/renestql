@@ -30,6 +30,7 @@ export const environment: IEnvironment = {
   },
 
   debug: {
-    printErrorStack: false,
+    printErrorStack: true,
+    printRawError: false,
   },
 };
