@@ -20,14 +20,14 @@ export const environment: IEnvironment = {
     database: 'nestdb',
     username: 'root',
     password: 'root',
-    logging: true,
+    logging: false,
     synchronize: false,
     retryAttempts: 3,
   },
 
   auth: {
     secretKey: 'supersecretkey',
-    tokenExpiresIn: '15m',
+    tokenExpiresIn: '1d',
   },
 
   debug: {
