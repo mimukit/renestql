@@ -27,6 +27,7 @@ export const environment: IEnvironment = {
 
   auth: {
     secretKey: process.env.SECRET_KEY,
+    tokenExpiresIn: '15m',
   },
 
   debug: {

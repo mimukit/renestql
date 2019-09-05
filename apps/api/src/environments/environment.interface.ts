@@ -26,6 +26,7 @@ export interface IEnvironment {
 
   auth: {
     secretKey: string;
+    tokenExpiresIn: string; // Eg: '60s', '15m', '10h', '2 days', '7d' [more info: zeit/ms](https://github.com/zeit/ms.js)
   };
 
   debug: {
