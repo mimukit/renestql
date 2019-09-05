@@ -16,7 +16,7 @@ export class UserResolver {
 
   @Query('whoami')
   @UseGuards(GqlAuthGuard)
-  async whoami(@CurrentUser() user: User): Promise<User> {
-    return await this.userService.currentUser(user);
+  whoami(@CurrentUser() user: User): User {
+    return this.userService.currentUser(user);
   }
 }

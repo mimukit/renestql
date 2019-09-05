@@ -10,7 +10,7 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  async currentUser(user: User): Promise<User> {
-    return this.userRepository.findOne({ id: user.id });
+  currentUser(user: User): User {
+    return user;
   }
 }
