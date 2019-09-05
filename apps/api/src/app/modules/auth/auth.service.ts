@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { PASSWORD_HASH_ROUND } from '../../const';
@@ -61,10 +61,6 @@ export class AuthService {
     if (!validPassword) {
       throw new BadRequestException('login failed, invalid email or password');
     }
-
-    Logger.debug(user, 'LoginUser');
-    Logger.debug(userPassword, 'LoginPassword');
-    Logger.debug(validPassword, 'LoginPasswordValid');
 
     // Generate login token for new user
 
