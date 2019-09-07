@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { roles } from '@nx-intro/roles';
+import { AccessControlModule } from 'nest-access-control';
 import { getMetadataArgsStorage } from 'typeorm';
 import { graphqlConfig } from '../config/graphql/graphql.config';
 import { typeOrmConfig } from '../config/typeorm/typeorm.config';
@@ -19,6 +21,9 @@ import { UserModule } from './modules/user/user.module';
 
     // Grpahql Server Module
     GraphQLModule.forRoot(graphqlConfig),
+
+    // Role Authorization Module
+    AccessControlModule.forRoles(roles),
 
     // Application Modules
     UserModule,

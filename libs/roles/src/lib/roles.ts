@@ -12,9 +12,13 @@ export const Roles = {
   USER: 'USER',
 };
 
+export const Resources = {
+  TODO: 'TODO',
+};
+
 const grantsObject = {
   [Roles.ADMIN]: {
-    todo: {
+    [Resources.TODO]: {
       'create:any': ['*'],
       'read:any': ['*'],
       'update:any': ['*'],
@@ -22,7 +26,7 @@ const grantsObject = {
     },
   },
   [Roles.USER]: {
-    todo: {
+    [Resources.TODO]: {
       'create:own': ['*'],
       'read:own': ['*'],
       'update:own': ['*'],
