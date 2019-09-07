@@ -10,6 +10,7 @@ export const graphqlConfig: GqlModuleOptions = {
   formatError: formatGraphqlError,
   debug: environment.production ? false : true,
   playground: environment.production ? false : true,
+  introspection: environment.production ? false : true,
   context: ({ req, res }) => ({ req, res }),
   definitions: {
     path: join(process.cwd(), './apps/api/src/app/graphql.types.ts'),

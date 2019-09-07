@@ -18,7 +18,9 @@ export const formatGraphqlError = (error: any) => {
     error.extensions.code ||
     'InternalServerError';
   const message =
-    error.message.message || error.message.error || 'internal server error';
+    typeof error.message === 'string'
+      ? error.message
+      : error.message.message || error.message.error || 'internal server error';
 
   const stack =
     environment.debug.printErrorStack &&
@@ -41,6 +43,13 @@ export const formatGraphqlError = (error: any) => {
     formattedError.path = 'request';
     formattedError.name = 'InvalidRequest';
     formattedError.message = 'request not valid. please check your query';
+  }
+
+  if (
+    error.extensions.code === 'GRAPHQL_VALIDATION_FAILED' &&
+    message.includes('introspection is not allowed')
+  ) {
+    formattedError.message = 'introspection query is not allowed';
   }
 
   if (
@@ -75,7 +84,9 @@ export const formatGraphqlError = (error: any) => {
     formattedError.code! = 403;
   }
 
-  Logger.error({ ...formattedError, stack }, null, 'GraphqlError');
+  if (!formattedError.message.includes('introspection query is not allowed')) {
+    Logger.error({ ...formattedError, stack }, null, 'GraphqlError');
+  }
 
   return formattedError;
 };
