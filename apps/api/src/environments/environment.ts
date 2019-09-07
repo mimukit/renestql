@@ -22,6 +22,7 @@ export const environment: IEnvironment = {
     password: 'root',
     logging: false,
     synchronize: false,
+    dropSchema: false,
     retryAttempts: 3,
   },
 

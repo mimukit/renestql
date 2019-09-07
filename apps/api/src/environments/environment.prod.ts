@@ -22,6 +22,7 @@ export const environment: IEnvironment = {
     password: process.env.TYPEORM_PASSWORD,
     logging: false,
     synchronize: false,
+    dropSchema: false,
     retryAttempts: 3,
   },
 
