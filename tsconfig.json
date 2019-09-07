@@ -17,7 +17,8 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-intro/schema": ["libs/schema/src/index.ts"]
+      "@nx-intro/schema": ["libs/schema/src/index.ts"],
+      "@nx-intro/roles": ["libs/roles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "dist"]

@@ -190,6 +190,33 @@
           }
         }
       }
+    },
+    "roles": {
+      "root": "libs/roles",
+      "sourceRoot": "libs/roles/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/roles/.eslintrc",
+            "tsConfig": [
+              "libs/roles/tsconfig.lib.json",
+              "libs/roles/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/roles/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/roles/jest.config.js",
+            "tsConfig": "libs/roles/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {
