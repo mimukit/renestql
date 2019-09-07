@@ -4,6 +4,7 @@ export const CUSTOM_ID_LENGTH = 10;
 export const REQUEST_ID_LENGTH = 25;
 export const CUSTOM_ID_CHARACTERS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 export const CUSTOM_ID_PREFIX = {
+  ADMIN: 'ADM',
   USER: 'USR',
 };
 
