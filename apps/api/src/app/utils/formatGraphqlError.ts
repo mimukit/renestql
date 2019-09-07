@@ -64,6 +64,13 @@ export const formatGraphqlError = (error: any) => {
     formattedError.message! = 'authorization token is missing, invalid or expired';
   }
 
+  if (
+    error.extensions.code === 'INTERNAL_SERVER_ERROR' &&
+    message.includes('Forbidden')
+  ) {
+    formattedError.message! = 'no permission to access the data';
+  }
+
   if (error.extensions.code === 'FORBIDDEN') {
     formattedError.code! = 403;
   }
