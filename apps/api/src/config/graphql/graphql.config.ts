@@ -2,7 +2,7 @@ import { GqlModuleOptions } from '@nestjs/graphql';
 import * as depthLimit from 'graphql-depth-limit';
 import { createComplexityLimitRule } from 'graphql-validation-complexity';
 import { join } from 'path';
-import { formatGraphqlError } from '../../app/utils/formatGraphqlError';
+import { formatGraphqlError } from '../../app/utils';
 import { environment } from '../../environments/environment';
 
 export const graphqlConfig: GqlModuleOptions = {

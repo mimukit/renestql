@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { generateRequestId } from '../utils/generateRequestId';
+import { generateRequestId } from '../utils';
 
 export const setRequestId = (
   req: Request,
