@@ -13,7 +13,11 @@ export class AuthService {
     private readonly jwtService: JwtService
   ) {}
 
-  async register({ email, password }: RegisterInput): Promise<AuthPayload> {
+  async register({
+    email,
+    password,
+    role,
+  }: RegisterInput): Promise<AuthPayload> {
     // Check if user with input email already exists
     const userExists = await this.userRepository.findOne({ email });
 
@@ -25,7 +29,11 @@ export class AuthService {
 
     const hashPassword = await this.getHashPassword(password);
 
-    const user = this.userRepository.create({ email, password: hashPassword });
+    const user = this.userRepository.create({
+      email,
+      password: hashPassword,
+      role,
+    });
 
     const newUser = await this.userRepository.save(user);
 

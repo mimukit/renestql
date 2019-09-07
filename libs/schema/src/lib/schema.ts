@@ -1,3 +1,4 @@
+import { Roles } from '@nx-intro/roles';
 import * as yup from 'yup';
 
 export const registerInputSchema = yup.object().shape({
@@ -10,6 +11,7 @@ export const registerInputSchema = yup.object().shape({
     .min(8)
     .max(50)
     .required(),
+  role: yup.string().oneOf(Object.keys(Roles)),
 });
 
 export const loginInputSchema = yup.object().shape({

@@ -2,6 +2,11 @@ import { RolesBuilder } from 'nest-access-control';
 
 export type RoleType = 'ADMIN' | 'USER';
 
+export enum RoleEnum {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+}
+
 export const Roles = {
   ADMIN: 'ADMIN',
   USER: 'USER',

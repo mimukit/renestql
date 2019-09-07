@@ -6,6 +6,7 @@ type Mutation {
 input RegisterInput {
   email: String!
   password: String!
+  role: RoleEnum!
 }
 
 input LoginInput {

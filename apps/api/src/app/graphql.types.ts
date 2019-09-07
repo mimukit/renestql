@@ -5,6 +5,11 @@
  */
 
 /* tslint:disable */
+export enum RoleEnum {
+    ADMIN = "ADMIN",
+    USER = "USER"
+}
+
 export class LoginInput {
     email: string;
     password: string;
@@ -13,6 +18,7 @@ export class LoginInput {
 export class RegisterInput {
     email: string;
     password: string;
+    role: RoleEnum;
 }
 
 export class AuthPayload {
@@ -36,4 +42,5 @@ export class User {
     id: string;
     userId: string;
     email: string;
+    role: RoleEnum;
 }
