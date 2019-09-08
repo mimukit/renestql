@@ -9,6 +9,7 @@ import { graphqlConfig } from '../config/graphql/graphql.config';
 import { typeOrmConfig } from '../config/typeorm/typeorm.config';
 import { GraphqlLoggingInterceptor } from './interceptors/graphqlLogging.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
+import { TodoModule } from './modules/todo/todo.module';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
@@ -28,6 +29,7 @@ import { UserModule } from './modules/user/user.module';
     // Application Modules
     UserModule,
     AuthModule,
+    TodoModule,
   ],
   controllers: [],
   providers: [
