@@ -70,7 +70,7 @@ export const formatGraphqlError = (error: any) => {
     error.extensions.code === 'INTERNAL_SERVER_ERROR' &&
     message.includes('Unauthorized')
   ) {
-    formattedError.message! = 'authorization token is missing, invalid or expired';
+    formattedError.message! = 'authorization token is missing, invalid or expired. please login again';
   }
 
   if (
