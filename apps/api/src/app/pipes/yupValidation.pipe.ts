@@ -12,7 +12,9 @@ export class YupValidationPipe implements PipeTransform {
 
   async transform(value: any, metadata: ArgumentMetadata) {
     try {
-      await this.schema.validate(value);
+      if (metadata.type === 'body' && metadata.data === 'data') {
+        await this.schema.validate(value);
+      }
     } catch (error) {
       throw new BadRequestException(error);
     }
