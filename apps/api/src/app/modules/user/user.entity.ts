@@ -1,13 +1,15 @@
-import { RoleEnum } from '@nx-intro/roles';
 import {
-  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { gererateCustomId, getUserIdPrefix } from '../../utils';
+
+enum RoleEnum {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+}
 
 @Entity('user')
 export class User {
@@ -35,10 +37,4 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: string;
-
-  @BeforeInsert()
-  async setUserId() {
-    const userIdPrefix = getUserIdPrefix(this.role);
-    this.userId = await gererateCustomId(userIdPrefix);
-  }
 }

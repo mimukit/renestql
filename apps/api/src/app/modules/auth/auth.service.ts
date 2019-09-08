@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { PASSWORD_HASH_ROUND } from '../../const';
 import { AuthPayload, LoginInput, RegisterInput } from '../../graphql.types';
+import { gererateCustomId, getUserIdPrefix } from '../../utils';
 import { User } from '../user/user.entity';
 import { UserRepository } from '../user/user.repository';
 
@@ -26,10 +27,15 @@ export class AuthService {
     }
 
     // Create new user with inputs
-
     const hashPassword = await this.getHashPassword(password);
 
+    // Set custom userId
+    const userIdPrefix = getUserIdPrefix(role);
+    const userId = await gererateCustomId(userIdPrefix);
+
+    // Create new user
     const user = this.userRepository.create({
+      userId,
       email,
       password: hashPassword,
       role,
@@ -38,7 +44,6 @@ export class AuthService {
     const newUser = await this.userRepository.save(user);
 
     // Generate login token for new user
-
     const token = await this.getToken(newUser);
 
     return {
@@ -71,7 +76,6 @@ export class AuthService {
     }
 
     // Generate login token for new user
-
     const token = await this.getToken(user);
 
     return {
