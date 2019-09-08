@@ -8,6 +8,7 @@ type User {
   userId: String!
   email: String!
   role: RoleEnum!
+  todos: [Todo!]!
 }
 
 type Query {

@@ -53,6 +53,7 @@ export class Todo {
     title: string;
     description?: string;
     completed: boolean;
+    user: User;
     createdAt: string;
     updatedAt?: string;
 }
@@ -62,4 +63,5 @@ export class User {
     userId: string;
     email: string;
     role: RoleEnum;
+    todos: Todo[];
 }

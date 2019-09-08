@@ -1,13 +1,23 @@
 import { UseGuards } from '@nestjs/common';
-import { Query, Resolver } from '@nestjs/graphql';
+import { Parent, Query, ResolveProperty, Resolver } from '@nestjs/graphql';
 import { CurrentUser } from '../../decorators/currentUser.decorator';
 import { User } from '../../graphql.types';
 import { GqlAuthGuard } from '../../guards/gqlAuth.guard';
+import { TodoRepository } from '../todo/todo.repository';
 import { UserService } from './user.service';
 
 @Resolver('User')
 export class UserResolver {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly todoRepository: TodoRepository,
+    private readonly userService: UserService
+  ) {}
+
+  @ResolveProperty('todos')
+  async user(@Parent() user: User) {
+    const { id } = user;
+    return await this.todoRepository.find({ userId: id });
+  }
 
   @Query('users')
   async users(): Promise<User[]> {

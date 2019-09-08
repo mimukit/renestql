@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Todo } from '../todo/todo.entity';
 
 enum RoleEnum {
   ADMIN = 'ADMIN',
@@ -31,6 +33,9 @@ export class User {
     default: RoleEnum.USER,
   })
   role: RoleEnum;
+
+  @OneToMany(type => Todo, todo => todo.user)
+  todos: Todo[];
 
   @CreateDateColumn()
   createdAt: string;
