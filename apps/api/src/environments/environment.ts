@@ -20,7 +20,7 @@ export const environment: IEnvironment = {
     database: 'nestdb',
     username: 'root',
     password: 'root',
-    logging: false,
+    logging: true,
     synchronize: false,
     dropSchema: false,
     retryAttempts: 3,
