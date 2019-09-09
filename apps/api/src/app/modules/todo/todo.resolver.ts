@@ -26,8 +26,8 @@ export class TodoResolver {
 
   @ResolveProperty('user')
   async user(@Parent() todo: Todo) {
-    const { userId } = todo;
-    return await this.userRepository.findOne({ id: userId });
+    const [user] = await this.userRepository.userLoaderById.load(todo.userId);
+    return user;
   }
 
   @Query('todos')

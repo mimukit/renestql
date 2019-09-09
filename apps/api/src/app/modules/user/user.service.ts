@@ -7,7 +7,7 @@ export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   async getAllUsers(): Promise<User[]> {
-    return this.userRepository.find({ relations: ['todos'] });
+    return this.userRepository.find();
   }
 
   currentUser(user: User): User {

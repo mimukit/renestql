@@ -11,7 +11,7 @@ export class TodoService {
   constructor(private readonly todoRepository: TodoRepository) {}
 
   async getAllTodos(): Promise<Todo[]> {
-    return this.todoRepository.find({ relations: ['user'] });
+    return this.todoRepository.find();
   }
 
   async createTodo(data: CreateTodoInput, user?: User): Promise<Todo> {
