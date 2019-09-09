@@ -1,3 +1,4 @@
+import * as DataLoader from 'dataloader';
 import { EntityRepository, In, Repository } from 'typeorm';
 import { createDataLoader } from '../../utils';
 import { Todo } from './todo.entity';
@@ -12,7 +13,7 @@ export class TodoRepository extends Repository<Todo> {
     });
   };
 
-  todoLoaderByUserId = createDataLoader({
+  todoLoaderByUserId: DataLoader<string, Todo[]> = createDataLoader({
     repository: this,
     dataLoaderName: 'todoLoaderByUserId',
     dataLoaderFunction: this.loadTodoByUserIds,

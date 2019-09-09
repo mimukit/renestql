@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '../../graphql.types';
+import { Todo } from '../todo/todo.entity';
 import { TodoRepository } from '../todo/todo.repository';
 import { UserRepository } from './user.repository';
 
@@ -14,7 +15,7 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  async getUserTodos(user: User) {
+  async getUserTodos(user: User): Promise<Todo[]> {
     return await this.todoRepository.todoLoaderByUserId.load(user.id);
   }
 

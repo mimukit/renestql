@@ -21,7 +21,7 @@ export class TodoResolver {
   constructor(private readonly todoService: TodoService) {}
 
   @ResolveProperty('user')
-  async user(@Parent() todo: Todo) {
+  async user(@Parent() todo: Todo): Promise<User> {
     return await this.todoService.getTodoUser(todo);
   }
 

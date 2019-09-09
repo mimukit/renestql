@@ -18,7 +18,7 @@ export class TodoService {
     return this.todoRepository.find();
   }
 
-  async getTodoUser(todo: Todo) {
+  async getTodoUser(todo: Todo): Promise<User> {
     const [user] = await this.userRepository.userLoaderById.load(todo.userId);
     return user;
   }
