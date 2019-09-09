@@ -13,21 +13,16 @@ import { CreateTodoInput } from '../../graphql.types';
 import { GqlAuthGuard } from '../../guards/gqlAuth.guard';
 import { YupValidationPipe } from '../../pipes/yupValidation.pipe';
 import { User } from '../user/user.entity';
-import { UserRepository } from '../user/user.repository';
 import { Todo } from './todo.entity';
 import { TodoService } from './todo.service';
 
 @Resolver('Todo')
 export class TodoResolver {
-  constructor(
-    private readonly userRepository: UserRepository,
-    private readonly todoService: TodoService
-  ) {}
+  constructor(private readonly todoService: TodoService) {}
 
   @ResolveProperty('user')
   async user(@Parent() todo: Todo) {
-    const [user] = await this.userRepository.userLoaderById.load(todo.userId);
-    return user;
+    return await this.todoService.getTodoUser(todo);
   }
 
   @Query('todos')
