@@ -8,13 +8,13 @@ interface CreateDataLoaderParams {
   filterKey: string;
 }
 
-export const createDataLoader = ({
+export const createDataLoader = <Entity>({
   repository,
   dataLoaderName,
   dataLoaderFunction,
   filterKey,
 }: CreateDataLoaderParams) =>
-  new Dataloader(async (ids: string[]) => {
+  new Dataloader<string, Entity[]>(async (ids: string[]) => {
     const data = await dataLoaderFunction(ids);
 
     const dataMap = groupBy(data, item => item[filterKey]);

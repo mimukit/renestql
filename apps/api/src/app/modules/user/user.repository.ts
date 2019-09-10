@@ -1,4 +1,3 @@
-import * as DataLoader from 'dataloader';
 import { EntityRepository, In, Repository } from 'typeorm';
 import { createDataLoader } from '../../utils';
 import { User } from './user.entity';
@@ -12,7 +11,7 @@ export class UserRepository extends Repository<User> {
       },
     });
 
-  userLoaderById: DataLoader<string, User[]> = createDataLoader({
+  userLoaderById = createDataLoader<User>({
     repository: this,
     dataLoaderName: 'userLoaderById',
     dataLoaderFunction: this.loadUserByIds,
