@@ -1,4 +1,4 @@
-import { Roles, RoleType } from '@nx-intro/roles';
+import { Roles, RoleType } from '@renestql/roles';
 import { CUSTOM_ID_PREFIX } from '../const';
 
 export const getUserIdPrefix = (role?: RoleType): string =>

@@ -1,6 +1,6 @@
 import { UsePipes } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
-import { loginInputSchema, registerInputSchema } from '@nx-intro/schema';
+import { loginInputSchema, registerInputSchema } from '@renestql/schema';
 import { AuthPayload, LoginInput, RegisterInput } from '../../graphql.types';
 import { YupValidationPipe } from '../../pipes/yupValidation.pipe';
 import { AuthService } from './auth.service';

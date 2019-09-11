@@ -7,7 +7,7 @@ import {
   ResolveProperty,
   Resolver,
 } from '@nestjs/graphql';
-import { createTodoInputSchema } from '@nx-intro/schema';
+import { createTodoInputSchema } from '@renestql/schema';
 import { CurrentUser } from '../../decorators/currentUser.decorator';
 import { CreateTodoInput } from '../../graphql.types';
 import { GqlAuthGuard } from '../../guards/gqlAuth.guard';

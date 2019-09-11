@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { GqlExecutionContext, GraphQLExecutionContext } from '@nestjs/graphql';
-import { RoleType } from '@nx-intro/roles';
+import { RoleType } from '@renestql/roles';
 import { IQueryInfo } from 'accesscontrol';
 import { Request } from 'express';
 import { InjectRolesBuilder, Role, RolesBuilder } from 'nest-access-control';

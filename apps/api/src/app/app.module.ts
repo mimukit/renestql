@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { roles } from '@nx-intro/roles';
+import { roles } from '@renestql/roles';
 import { AccessControlModule } from 'nest-access-control';
 import { getMetadataArgsStorage } from 'typeorm';
 import { graphqlConfig } from '../config/graphql/graphql.config';

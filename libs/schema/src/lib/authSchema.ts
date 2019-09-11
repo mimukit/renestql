@@ -1,4 +1,4 @@
-import { Roles } from '@nx-intro/roles';
+import { Roles } from '@renestql/roles';
 import * as yup from 'yup';
 
 export const registerInputSchema = yup.object().shape({
