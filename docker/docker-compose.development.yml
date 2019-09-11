@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  db:
+    container_name: 'renestql_db_mysql'
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3307:3306

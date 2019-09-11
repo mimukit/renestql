@@ -35,7 +35,8 @@
     "typeorm:cli": "ts-node -O '{\"module\": \"commonjs\"}' ./node_modules/.bin/typeorm -f ./apps/api/src/config/typeorm/typeorm.cli.ts",
     "migration:generate": "yarn typeorm:cli migration:generate",
     "migration:up": "yarn typeorm:cli migration:run",
-    "migration:down": "yarn typeorm:cli migration:revert"
+    "migration:down": "yarn typeorm:cli migration:revert",
+    "docker:up": "docker-compose -f docker/docker-compose.development.yml up"
   },
   "private": true,
   "dependencies": {

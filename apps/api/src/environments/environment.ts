@@ -16,8 +16,8 @@ export const environment: IEnvironment = {
 
   database: {
     host: '127.0.0.1',
-    port: 3306,
-    database: 'nestdb',
+    port: 3307,
+    database: 'renestql_db',
     username: 'root',
     password: 'root',
     logging: true,
